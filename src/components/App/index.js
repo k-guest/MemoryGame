@@ -2,7 +2,7 @@ import './style.scss';
 
 import { useState } from 'react';
 
-const card = [
+const cardImages = [
     {"src": "/img/earth.png"},
     {"src": "/img/jupiter.png"},
     {"src": "/img/mars.png"},
@@ -17,7 +17,7 @@ function App () {
     const [turns, setTurns] = useState(0);
 
     const shuffledCards = () => {
-        const shuffledCards = [...card, ...card]
+        const shuffledCards = [...cardImages, ...cardImages]
         .sort(() => Math.random() - 0.5)
         .map((card) => ({ ...card, id: Math.random() }))
 
@@ -31,6 +31,17 @@ function App () {
         <div className="app">
             <h1>Memory Game</h1>
             <button onClick={shuffledCards}>New Game</button>
+
+            <div className="card-grid">
+                {cards.map(card => (
+                    <div className="card" key={card.id}>
+                        <div>
+                            <img className="front" src={card.src} alt="card front" />
+                            <img className="back" src="/img/astronaut.png" alt="card back" />
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
