@@ -1,3 +1,5 @@
+@use '/src/styles/vars.scss';
+
 .app {
     max-width: 860px;
     margin: 40px auto;
@@ -20,7 +22,7 @@ button {
 }
 
 button:hover {
-    background: #C23866;
+    background: vars.$button-color;
     color: #FFF;
 }
 

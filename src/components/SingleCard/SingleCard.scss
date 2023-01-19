@@ -1,3 +1,5 @@
+@use '/src/styles/vars.scss';
+
 .card {
     position: relative;
 }
@@ -11,7 +13,7 @@
 }
 
 .card .front {
-    background: #E8EDDF;
+    background: vars.$front-card-color;
     transform: rotateY(90deg);
     transition: all ease-in 0.2s;
     position: absolute;
@@ -23,7 +25,7 @@
 }
 
 .card .back {
-    background: #C23866;
+    background: vars.$back-card-color;
     transition: all ease-in 0.2s;
     transition-delay: 0.2s;
 }
