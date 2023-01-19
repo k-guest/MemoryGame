@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 import SingleCard from '../SingleCard/SingleCard';
 
 const cardImages = [
-    {"src": "/img/earth.png"},
-    {"src": "/img/jupiter.png"},
-    {"src": "/img/mars.png"},
-    {"src": "/img/mercury.png"},
-    {"src": "/img/neptune.png"},
-    {"src": "/img/venus.png"},
+    {"src": "/img/earth.png", matched: false},
+    {"src": "/img/jupiter.png", matched: false},
+    {"src": "/img/mars.png", matched: false},
+    {"src": "/img/mercury.png", matched: false},
+    {"src": "/img/neptune.png", matched: false},
+    {"src": "/img/venus.png", matched: false}
 ]
 
 function App () {
@@ -36,14 +36,23 @@ function App () {
     useEffect(() => {
         if (choiceOne && choiceTwo) {
             if (choiceOne.src === choiceTwo.src) {
-                console.log("Those cards match");
+                setCards(prevCards => {
+                    return prevCards.map(card => {
+                        if (card.src === choiceOne.src) {
+                            return {...card, matched: true}
+                        } else {
+                            return card;
+                        }
+                    })
+                })
                 resetTurn();
             } else {
-                console.log("Those cards do not match");
                 resetTurn();
             }
         }
     }, [choiceOne, choiceTwo])
+
+    console.log(cards);
 
     const resetTurn = () => {
         setChoiceOne(null);
