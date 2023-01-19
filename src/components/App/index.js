@@ -2,6 +2,8 @@ import './style.scss';
 
 import { useState } from 'react';
 
+import SingleCard from '../SingleCard/SingleCard';
+
 const cardImages = [
     {"src": "/img/earth.png"},
     {"src": "/img/jupiter.png"},
@@ -34,12 +36,7 @@ function App () {
 
             <div className="card-grid">
                 {cards.map(card => (
-                    <div className="card" key={card.id}>
-                        <div>
-                            <img className="front" src={card.src} alt="card front" />
-                            <img className="back" src="/img/astronaut.png" alt="card back" />
-                        </div>
-                    </div>
+                    <SingleCard key={card.id} card={card}/>
                 ))}
             </div>
         </div>
